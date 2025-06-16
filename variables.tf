@@ -1,8 +1,3 @@
-variable "project_id" {
-  description = "The ID of the project."
-  type        = string
-}
-
 variable "repository_name" {
   description = "The name of the GitHub repository to be used for the Workload Identity Pool."
   type        = string

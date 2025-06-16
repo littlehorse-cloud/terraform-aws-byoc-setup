@@ -4,7 +4,20 @@ This module is to create the required resources to host littlehorse BYOC.
 
 ## Usage
 
-TBD
+```hcl
+
+module "byoc" {
+  source  = "littlehorse-cloud/byoc-setup/aws"
+  version = "0.0.0"
+
+  repository_name = "$REPOSITORY_NAME"
+}
+
+provider "aws" {
+  region = "us-east-2"
+}
+
+```
 
 ## How to contribute
 
@@ -73,7 +86,6 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_bucket_terraform_state"></a> [bucket\_terraform\_state](#input\_bucket\_terraform\_state) | The name of the GCS bucket to store Terraform state. | `string` | `""` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | The name of the GitHub organization to be used for the Workload Identity Pool. | `string` | `"littlehorse-cloud"` | no |
-| <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The ID of the project. | `string` | n/a | yes |
 | <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the GitHub repository to be used for the Workload Identity Pool. | `string` | n/a | yes |
 
 ## Outputs

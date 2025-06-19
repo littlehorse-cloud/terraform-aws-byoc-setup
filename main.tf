@@ -55,14 +55,7 @@ data "aws_iam_policy_document" "github_role_policy" {
     sid    = "LittleHorseBYOCManager"
     effect = "Allow"
 
-    actions = [
-      "ec2:*",
-      "eks:*",
-      "elasticloadbalancing:*",
-      "kms:*",
-      "route53:*",
-      "route53domains:*"
-    ]
+    actions = local.byoc_manager_actions
 
     resources = ["*"]
   }

@@ -85,6 +85,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_bucket_terraform_state"></a> [bucket\_terraform\_state](#input\_bucket\_terraform\_state) | The name of the GCS bucket to store Terraform state. | `string` | `""` | no |
+| <a name="input_byoc_manager_additional_actions"></a> [byoc\_manager\_additional\_actions](#input\_byoc\_manager\_additional\_actions) | Additional roles to append to BYOCManager Role | `list(string)` | `[]` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | The name of the GitHub organization to be used for the Workload Identity Pool. | `string` | `"littlehorse-cloud"` | no |
 | <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the GitHub repository to be used for the Workload Identity Pool. | `string` | n/a | yes |
 

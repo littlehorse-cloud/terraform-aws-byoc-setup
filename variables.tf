@@ -11,6 +11,12 @@ variable "organization_name" {
 
 variable "bucket_terraform_state" {
   description = "The name of the GCS bucket to store Terraform state."
-  default     = ""
   type        = string
+  default     = ""
+}
+
+variable "byoc_manager_additional_actions" {
+  description = "Additional roles to append to BYOCManager Role"
+  type        = list(string)
+  default     = []
 }

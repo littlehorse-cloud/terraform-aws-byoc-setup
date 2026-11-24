@@ -6,6 +6,7 @@ locals {
     "secretsmanager:DescribeSecret",
     "secretsmanager:DeleteSecret",
     "secretsmanager:CreateSecret",
+    "secretsmanager:UpdateSecretVersionStage",
     "route53domains:*",
     "route53:*",
     "logs:TagResource",

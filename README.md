@@ -77,7 +77,7 @@ Look at [`cliff.toml`](./cliff.toml) to see a more up to date configuration.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.99, < 6 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.5.1, < 4 |
@@ -85,7 +85,7 @@ Look at [`cliff.toml`](./cliff.toml) to see a more up to date configuration.
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.99, < 6 |
 
 ## Modules
@@ -95,7 +95,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_iam_openid_connect_provider.github](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_openid_connect_provider) | resource |
 | [aws_iam_policy.github](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.github](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -111,7 +111,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_bucket_terraform_state"></a> [bucket\_terraform\_state](#input\_bucket\_terraform\_state) | The name of the S3 bucket to store Terraform state. Defaults to `<ACCOUNT_ID>-lh-byoc-terraform-state`. | `string` | `""` | no |
 | <a name="input_byoc_manager_additional_actions"></a> [byoc\_manager\_additional\_actions](#input\_byoc\_manager\_additional\_actions) | Additional roles to append to BYOCManager Role | `list(string)` | `[]` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | The name of the GitHub organization to be used for the Workload Identity Pool. | `string` | `"littlehorse-cloud"` | no |
@@ -120,6 +120,6 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_byoc_setup_details"></a> [byoc\_setup\_details](#output\_byoc\_setup\_details) | Details for BYOC setup |
 <!-- END_TF_DOCS -->

@@ -1,23 +1,50 @@
-# Terraform AWS Littlehorse BYOC
+# LittleHorse AWS BYOC Setup
 
 This module is to create the required resources to host littlehorse BYOC.
 
-## Usage
+## How to use
 
 ```hcl
 
 module "byoc" {
   source  = "littlehorse-cloud/byoc-setup/aws"
-  version = "0.0.0"
-
+  version = "$MODULE_VERSION"
   repository_name = "$REPOSITORY_NAME"
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region = "$REGION"
 }
 
 ```
+
+### Replace:
+
+`$MODULE_VERSION` with the latest version of this module.
+`$REPOSITORY_NAME` with the github repository hosting the byoc configuration.
+`$REGION` with the target AWS region of the installation
+
+## Install via AWS cloud shell
+
+Open AWS CloudShell in the target region.
+
+The script only needs the repository name as a parameter, the AWS region is optional
+(defaults to the CloudShell region, `AWS_REGION`).
+
+Run the script
+
+```sh
+
+curl -sSL https://raw.githubusercontent.com/littlehorse-cloud/terraform-aws-byoc-setup/main/scripts/setup.sh | bash -s <REPOSITORY_NAME>
+
+```
+
+**Note: the repository name assumes the prefix `aws-byoc-<REPOSITORY_NAME>`**
+
+If terraform is not installed, the script installs it in `~/.local/bin`.
+The default terraform state bucket is named `<ACCOUNT_ID>-lh-byoc-terraform-state`.
+
+Once the process ends, share the output with the sales representative.
 
 ## How to contribute
 
@@ -77,6 +104,7 @@ No modules.
 | [aws_s3_bucket_acl.terraform_state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_ownership_controls.terraform_state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_ownership_controls) | resource |
 | [aws_s3_bucket_versioning.terraform_state](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.github_assume_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.github_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
@@ -84,7 +112,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_bucket_terraform_state"></a> [bucket\_terraform\_state](#input\_bucket\_terraform\_state) | The name of the GCS bucket to store Terraform state. | `string` | `""` | no |
+| <a name="input_bucket_terraform_state"></a> [bucket\_terraform\_state](#input\_bucket\_terraform\_state) | The name of the S3 bucket to store Terraform state. Defaults to `<ACCOUNT_ID>-lh-byoc-terraform-state`. | `string` | `""` | no |
 | <a name="input_byoc_manager_additional_actions"></a> [byoc\_manager\_additional\_actions](#input\_byoc\_manager\_additional\_actions) | Additional roles to append to BYOCManager Role | `list(string)` | `[]` | no |
 | <a name="input_organization_name"></a> [organization\_name](#input\_organization\_name) | The name of the GitHub organization to be used for the Workload Identity Pool. | `string` | `"littlehorse-cloud"` | no |
 | <a name="input_repository_name"></a> [repository\_name](#input\_repository\_name) | The name of the GitHub repository to be used for the Workload Identity Pool. | `string` | n/a | yes |

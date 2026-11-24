@@ -10,7 +10,7 @@ variable "organization_name" {
 }
 
 variable "bucket_terraform_state" {
-  description = "The name of the GCS bucket to store Terraform state."
+  description = "The name of the S3 bucket to store Terraform state. Defaults to `<ACCOUNT_ID>-lh-byoc-terraform-state`."
   type        = string
   default     = ""
 }

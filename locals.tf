@@ -52,5 +52,5 @@ locals {
     "autoscaling:DescribeAutoScalingGroups",
     "autoscaling:AttachLoadBalancerTargetGroups"
   ], var.byoc_manager_additional_actions)
-  bucket_terraform_state = var.bucket_terraform_state != "" ? var.bucket_terraform_state : "littlehorse-byoc-terraform-state"
+  bucket_terraform_state = var.bucket_terraform_state != "" ? var.bucket_terraform_state : "${data.aws_caller_identity.current.account_id}-lh-byoc-terraform-state"
 }
